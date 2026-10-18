@@ -1,0 +1,12 @@
+name: binance-test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -s -o /dev/null -w "HTTP %{http_code}\n" "https://data-api.binance.vision/api/v3/ping"
+          curl -s "https://data-api.binance.vision/api/v3/klines?symbol=PAXGUSDT&interval=5m&limit=2"
